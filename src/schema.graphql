@@ -1,0 +1,50 @@
+# import Book from "./generated/prisma.graphql"
+
+type BookSearchResult {
+  googleId: String!
+  googleLink: String!
+  bookThumbnail: String!
+  bookTitle: String!
+  bookRating: Float
+  ratingsCount: Float
+  authorList: [String!]
+  publicationDate: String
+  categoryList: [String!]
+  bookOwner: User!
+}
+
+type Query {
+  fullBookList: [Book!]!
+  bookSearch(bookTitle: String!): [BookSearchResult!]!
+  userList: [User!]!
+  me: User
+}
+
+type Mutation {
+  signup(email: String!, password: String!, userName: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  addBook(
+    googleId: String!
+    googleLink: String!
+    bookThumbnail: String!
+    bookTitle: String!
+    bookRating: Float
+    ratingsCount: Float
+    authorList: [String!]
+    publicationDate: String
+    categoryList: [String!]
+  ): Book!
+  removeBook(id: ID!): Book!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  email: String!
+  userName: String!
+  myBookList: [Book!]!
+}

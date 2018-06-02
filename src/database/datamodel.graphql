@@ -1,0 +1,21 @@
+type Book {
+  id: ID! @unique
+  googleId: String! @unique
+  googleLink: String!
+  bookThumbnail: String!
+  bookTitle: String!
+  bookRating: Float
+  ratingsCount: Float
+  authorList: [String!]
+  publicationDate: String
+  categoryList: [String!]
+  bookOwner: User!
+}
+
+type User {
+  id: ID! @unique
+  email: String! @unique
+  password: String!
+  userName: String!
+  myBookList: [Book!]!
+}
