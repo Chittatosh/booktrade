@@ -8,9 +8,9 @@ import { FULL_BOOK_LIST, ME_QUERY, ADD_BOOK } from '../client/constants';
 const propTypes = {
   bookProp: PropTypes.shape({
     googleId: PropTypes.string.isRequired,
-    googleLink: PropTypes.string.isRequired,
-    bookThumbnail: PropTypes.string.isRequired,
     bookTitle: PropTypes.string.isRequired,
+    googleLink: PropTypes.string.isRequired,
+    bookThumbnail: PropTypes.string,
     bookRating: PropTypes.number,
     ratingsCount: PropTypes.number,
     authorList: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -23,7 +23,7 @@ const updateFunc = (cache, { data: { addBook } }) => {
   const { fullBookList } = cache.readQuery({ query: FULL_BOOK_LIST });
   cache.writeQuery({
     query: FULL_BOOK_LIST,
-    data: { fullBookList: fullBookList.concat([addBook]) },
+    data: { fullBookList: [addBook, ...fullBookList] },
   });
   const {
     me: { id, userName, myBookList, __typename },
@@ -34,7 +34,7 @@ const updateFunc = (cache, { data: { addBook } }) => {
       me: {
         id,
         userName,
-        myBookList: myBookList.concat([addBook]),
+        myBookList: [addBook, ...myBookList],
         __typename,
       },
     },
@@ -47,9 +47,9 @@ const AddBookMutn = ({ bookProp }) => (
     update={updateFunc}
     variables={{
       googleId: bookProp.googleId,
+      bookTitle: bookProp.bookTitle,
       googleLink: bookProp.googleLink,
       bookThumbnail: bookProp.bookThumbnail,
-      bookTitle: bookProp.bookTitle,
       bookRating: bookProp.bookRating,
       ratingsCount: bookProp.ratingsCount,
       authorList: bookProp.authorList,

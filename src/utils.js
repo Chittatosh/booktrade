@@ -28,9 +28,9 @@ function googleBooksPromise(bookTitle) {
       if (error) return reject(error);
       const googleBookList = resBookList.map(book => ({
         googleId: book.id,
+        bookTitle: book.title,
         googleLink: book.link,
         bookThumbnail: book.thumbnail,
-        bookTitle: book.title,
         bookRating: book.averageRating,
         ratingsCount: book.ratingsCount,
         authorList: book.authors,

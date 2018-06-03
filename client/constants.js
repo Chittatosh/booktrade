@@ -5,9 +5,9 @@ const SEARCH_TERM = 'search_term';
 
 const GOOGLE_BOOK_FIELDS = `
   googleId
+  bookTitle
   googleLink
   bookThumbnail
-  bookTitle
   bookRating
   ratingsCount
   authorList
@@ -51,25 +51,25 @@ const SEARCH_QUERY = gql`
 
 const ADD_BOOK = gql`
   mutation addBook(
-    $googleId: String!, 
-    $googleLink: String!, 
-    $bookThumbnail: String!, 
-    $bookTitle: String!, 
-    $bookRating: Float, 
-    $ratingsCount: Float, 
-    $authorList: [String!], 
-    $publicationDate: String, 
+    $googleId: String!,
+    $bookTitle: String!,
+    $googleLink: String!,
+    $bookThumbnail: String,
+    $bookRating: Float,
+    $ratingsCount: Float,
+    $authorList: [String!],
+    $publicationDate: String,
     $categoryList: [String!]
   ) {
     addBook(
-      googleId: $googleId, 
-      googleLink: $googleLink, 
-      bookThumbnail: $bookThumbnail, 
-      bookTitle: $bookTitle, 
-      bookRating: $bookRating, 
-      ratingsCount: $ratingsCount, 
-      authorList: $authorList, 
-      publicationDate: $publicationDate, 
+      googleId: $googleId,
+      bookTitle: $bookTitle,
+      googleLink: $googleLink,
+      bookThumbnail: $bookThumbnail,
+      bookRating: $bookRating,
+      ratingsCount: $ratingsCount,
+      authorList: $authorList,
+      publicationDate: $publicationDate,
       categoryList: $categoryList
     ) ${BOOK}
   }

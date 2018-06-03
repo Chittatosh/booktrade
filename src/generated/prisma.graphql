@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/chittatosh-undirwade-78f1b4/booktrade/dev
-# timestamp: Fri Jun 01 2018 05:05:41 GMT+0530 (India Standard Time)
+# timestamp: Sun Jun 03 2018 01:29:47 GMT+0530 (India Standard Time)
 
 type AggregateBook {
   count: Int!
@@ -17,9 +17,9 @@ type BatchPayload {
 type Book implements Node {
   id: ID!
   googleId: String!
-  googleLink: String!
-  bookThumbnail: String!
   bookTitle: String!
+  googleLink: String!
+  bookThumbnail: String
   bookRating: Float
   ratingsCount: Float
   authorList: [String!]
@@ -48,9 +48,9 @@ input BookCreatecategoryListInput {
 
 input BookCreateInput {
   googleId: String!
-  googleLink: String!
-  bookThumbnail: String!
   bookTitle: String!
+  googleLink: String!
+  bookThumbnail: String
   bookRating: Float
   ratingsCount: Float
   publicationDate: String
@@ -66,9 +66,9 @@ input BookCreateManyWithoutBookOwnerInput {
 
 input BookCreateWithoutBookOwnerInput {
   googleId: String!
-  googleLink: String!
-  bookThumbnail: String!
   bookTitle: String!
+  googleLink: String!
+  bookThumbnail: String
   bookRating: Float
   ratingsCount: Float
   publicationDate: String
@@ -90,12 +90,12 @@ enum BookOrderByInput {
   id_DESC
   googleId_ASC
   googleId_DESC
+  bookTitle_ASC
+  bookTitle_DESC
   googleLink_ASC
   googleLink_DESC
   bookThumbnail_ASC
   bookThumbnail_DESC
-  bookTitle_ASC
-  bookTitle_DESC
   bookRating_ASC
   bookRating_DESC
   ratingsCount_ASC
@@ -111,9 +111,9 @@ enum BookOrderByInput {
 type BookPreviousValues {
   id: ID!
   googleId: String!
-  googleLink: String!
-  bookThumbnail: String!
   bookTitle: String!
+  googleLink: String!
+  bookThumbnail: String
   bookRating: Float
   ratingsCount: Float
   authorList: [String!]
@@ -170,9 +170,9 @@ input BookUpdatecategoryListInput {
 
 input BookUpdateInput {
   googleId: String
+  bookTitle: String
   googleLink: String
   bookThumbnail: String
-  bookTitle: String
   bookRating: Float
   ratingsCount: Float
   publicationDate: String
@@ -192,9 +192,9 @@ input BookUpdateManyWithoutBookOwnerInput {
 
 input BookUpdateWithoutBookOwnerDataInput {
   googleId: String
+  bookTitle: String
   googleLink: String
   bookThumbnail: String
-  bookTitle: String
   bookRating: Float
   ratingsCount: Float
   publicationDate: String
@@ -302,6 +302,46 @@ input BookWhereInput {
 
   """All values not ending with the given string."""
   googleId_not_ends_with: String
+  bookTitle: String
+
+  """All values that are not equal to given value."""
+  bookTitle_not: String
+
+  """All values that are contained in given list."""
+  bookTitle_in: [String!]
+
+  """All values that are not contained in given list."""
+  bookTitle_not_in: [String!]
+
+  """All values less than the given value."""
+  bookTitle_lt: String
+
+  """All values less than or equal the given value."""
+  bookTitle_lte: String
+
+  """All values greater than the given value."""
+  bookTitle_gt: String
+
+  """All values greater than or equal the given value."""
+  bookTitle_gte: String
+
+  """All values containing the given string."""
+  bookTitle_contains: String
+
+  """All values not containing the given string."""
+  bookTitle_not_contains: String
+
+  """All values starting with the given string."""
+  bookTitle_starts_with: String
+
+  """All values not starting with the given string."""
+  bookTitle_not_starts_with: String
+
+  """All values ending with the given string."""
+  bookTitle_ends_with: String
+
+  """All values not ending with the given string."""
+  bookTitle_not_ends_with: String
   googleLink: String
 
   """All values that are not equal to given value."""
@@ -382,46 +422,6 @@ input BookWhereInput {
 
   """All values not ending with the given string."""
   bookThumbnail_not_ends_with: String
-  bookTitle: String
-
-  """All values that are not equal to given value."""
-  bookTitle_not: String
-
-  """All values that are contained in given list."""
-  bookTitle_in: [String!]
-
-  """All values that are not contained in given list."""
-  bookTitle_not_in: [String!]
-
-  """All values less than the given value."""
-  bookTitle_lt: String
-
-  """All values less than or equal the given value."""
-  bookTitle_lte: String
-
-  """All values greater than the given value."""
-  bookTitle_gt: String
-
-  """All values greater than or equal the given value."""
-  bookTitle_gte: String
-
-  """All values containing the given string."""
-  bookTitle_contains: String
-
-  """All values not containing the given string."""
-  bookTitle_not_contains: String
-
-  """All values starting with the given string."""
-  bookTitle_starts_with: String
-
-  """All values not starting with the given string."""
-  bookTitle_not_starts_with: String
-
-  """All values ending with the given string."""
-  bookTitle_ends_with: String
-
-  """All values not ending with the given string."""
-  bookTitle_not_ends_with: String
   bookRating: Float
 
   """All values that are not equal to given value."""

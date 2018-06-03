@@ -10,9 +10,9 @@ const propTypes = {
   bookProp: PropTypes.shape({
     id: PropTypes.string,
     googleId: PropTypes.string.isRequired,
-    googleLink: PropTypes.string.isRequired,
-    bookThumbnail: PropTypes.string.isRequired,
     bookTitle: PropTypes.string.isRequired,
+    googleLink: PropTypes.string.isRequired,
+    bookThumbnail: PropTypes.string,
     bookRating: PropTypes.number,
     ratingsCount: PropTypes.number,
     authorList: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -31,7 +31,10 @@ const BookCard = ({ bookProp, addBool, deleteBool }) => (
     <a href={bookProp.googleLink}>
       <img
         className="card-img-top"
-        src={bookProp.bookThumbnail.replace('http://', 'https://')}
+        src={
+          bookProp.bookThumbnail &&
+          bookProp.bookThumbnail.replace('http://', 'https://')
+        }
         alt={bookProp.bookTitle}
       />
     </a>

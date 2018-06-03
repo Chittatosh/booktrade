@@ -2,9 +2,9 @@
 
 type BookSearchResult {
   googleId: String!
-  googleLink: String!
-  bookThumbnail: String!
   bookTitle: String!
+  googleLink: String!
+  bookThumbnail: String
   bookRating: Float
   ratingsCount: Float
   authorList: [String!]
@@ -25,9 +25,9 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload!
   addBook(
     googleId: String!
-    googleLink: String!
-    bookThumbnail: String!
     bookTitle: String!
+    googleLink: String!
+    bookThumbnail: String
     bookRating: Float
     ratingsCount: Float
     authorList: [String!]
